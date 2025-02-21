@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "12117261560",
+    "firebase_url": "https://foodappflutter-ae888-default-rtdb.firebaseio.com",
+    "project_id": "foodappflutter-ae888",
+    "storage_bucket": "foodappflutter-ae888.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12117261560:android:0601f081f8bf970ba70f0d",
+        "android_client_info": {
+          "package_name": "com.example.food_delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ7nMb52BFZMH7z_TSgC8WIWESBypAcPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
