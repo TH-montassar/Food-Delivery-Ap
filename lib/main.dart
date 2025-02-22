@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:food_delivery_app/screens/admin/dashboard_screen.dart';
+import 'package:food_delivery_app/screens/admin/login_screen.dart';
+import 'package:food_delivery_app/screens/auth_wrapper.dart';
 import 'package:food_delivery_app/screens/customer/home_screen.dart';
 import 'firebase_options.dart';
 
@@ -14,10 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Food Delivery App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: HomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/login': (context) => LoginScreen(),
+        '/dashboard': (context) => AuthWrapper(),
+      },
     );
   }
 }
