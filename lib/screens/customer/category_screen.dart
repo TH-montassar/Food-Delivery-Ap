@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/screens/customer/order_screen.dart';
+import 'package:food_delivery_app/screens/customer/item_details_screen.dart';
+import 'package:food_delivery_app/models/item_model.dart';
 
 class CategoryScreen extends StatelessWidget {
   final String categoryId;
@@ -27,6 +28,12 @@ class CategoryScreen extends StatelessWidget {
             itemCount: items.length,
             itemBuilder: (context, index) {
               var item = items[index];
+              var itemData =
+                  item.data() as Map<String, dynamic>?; // Define itemData here
+              // Handle null values
+              var name = itemData?['name'] ?? 'Unnamed Item';
+              var price = itemData?['price']?.toString() ?? '0.00';
+
               return ListTile(
                 title: Text(item["name"]),
                 subtitle: Text("\$${item["price"]}"),
@@ -34,7 +41,12 @@ class CategoryScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => OrderScreen(itemId: item.id),
+                      builder:
+                          (context) => ItemDetailsScreen(
+                            item: Item.fromMap(
+                              item.data() as Map<String, dynamic>,
+                            ),
+                          ),
                     ),
                   );
                 },

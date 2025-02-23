@@ -1,26 +1,36 @@
 class Item {
   final String id;
   final String name;
-  final String categoryId;
+  final String description;
   final double price;
+  final String categoryId;
 
   Item({
     required this.id,
     required this.name,
-    required this.categoryId,
+    required this.description,
     required this.price,
+    required this.categoryId,
+    re,
   });
 
   factory Item.fromMap(Map<String, dynamic> data) {
     return Item(
-      id: data["id"],
-      name: data["name"],
-      categoryId: data["categoryId"],
-      price: data["price"],
+      id: data['id'] ?? '',
+      name: data['name'] ?? 'Unnamed Item',
+      description: data['description'] ?? 'No description available',
+      price: data['price'],
+      categoryId: data['categoryId'] ?? '',
     );
   }
 
   Map<String, dynamic> toMap() {
-    return {"id": id, "name": name, "categoryId": categoryId, "price": price};
+    return {
+      "id": id,
+      "name": name,
+      'description': description,
+      "categoryId": categoryId,
+      "price": price,
+    };
   }
 }

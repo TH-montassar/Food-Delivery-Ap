@@ -4,11 +4,25 @@ import 'package:food_delivery_app/screens/admin/dashboard_screen.dart';
 import 'package:food_delivery_app/screens/admin/login_screen.dart';
 import 'package:food_delivery_app/screens/auth_wrapper.dart';
 import 'package:food_delivery_app/screens/customer/home_screen.dart';
+import 'package:food_delivery_app/screens/customer/welcome_screen.dart';
 import 'firebase_options.dart';
+import 'package:food_delivery_app/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  // Ensure Flutter binding is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    print("Firebase initialized successfully");
+  } catch (e) {
+    print("Failed to initialize Firebase: $e");
+  }
+  runApp(
+    ChangeNotifierProvider(create: (context) => CartProvider(), child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,11 +32,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Food Delivery App',
       initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
+      home: WelcomeScreen(),
+      /*  routes: {
+        '/': (context) => WelcomeScreen(),
         '/login': (context) => LoginScreen(),
-        '/dashboard': (context) => AuthWrapper(),
-      },
+        '/dashboard': (context) => LoginScreen(),
+        '/home': (context) => HomeScreen(),
+      }, */
     );
   }
 }
