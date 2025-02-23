@@ -49,6 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Add your logo here
+            Image.asset(
+              'assets/logo.jpg', // Path to your logo image in the assets folder
+              height: 200, // Adjust the height as needed
+              width: 200, // Adjust the width as needed
+            ),
+            SizedBox(height: 20),
             Text(
               "livraison",
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
